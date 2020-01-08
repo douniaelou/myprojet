@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -30,150 +31,230 @@
   <body>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
     
-    <!-- Create a div where the graph will take place -->
-    <div id="my_dataviz"></div>
+        <!-- Create a div where the graph will take place -->
+    <nav class="nav nav--active">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <div class="nav__thumb color1" data-letter="a"></div>
+            <p class="nav__label">Graphique 1</p>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <div class="nav__thumb color2" data-letter="e"></div>
+            <p class="nav__label">Engagement</p>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <div class="nav__thumb color3" data-letter="c"></div>
+            <p class="nav__label">Consideration</p>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <div class="nav__thumb color4" data-letter="a"></div>
+            <p class="nav__label">Acquisition</p>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <div class="nav__thumb color5" data-letter="r"></div>
+            <p class="nav__label">Retention</p>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="" class="nav__link">
+            <div class="nav__thumb color6" data-letter="g"></div>
+            <p class="nav__label">Growth</p>
+          </a>
+        </li>
+      </ul>
+       <a href="http://ettrics.com/" class="logo" target="_blank">
+       <img class="logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/ettrics-logo.svg" alt="" /> 
+      </a>
+    </nav>
 
-    <!-- A bit of CSS: change stroke color of circle on hover (white -> black) -->
-    <style>
-    .bubbles {
-      stroke-width: 2px;
-      stroke: white;
-    }
-    .bubbles:hover {
-      stroke: black;
-    }
-    </style>
+    <div class="page">
+      <section class="section section--active color1" data-letter="a">
+        <article class="section__wrapper">
+          <h1 class="section__title">1er graphique</h1>
+          <p>blablablablaaaaaaaaaaaa</p>
+          <div id="my_dataviz"></div>
 
-
-
-
-    <script>
-    // set the dimensions and margins of the graph
-    var margin = {top: 10, right: 20, bottom: 30, left: 50},
-        width = 900 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
-    // append the svg object to the body of the page
-    var svg = d3.select("#my_dataviz")
-      .append("svg")
-        .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-        .attr("transform",
-              "translate(" + margin.left + "," + margin.top + ")");
-    //Read the data
-    d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/First_table_.csv", function(data) {
-      // Add X axis
-      var x = d3.scaleLinear()
-        .domain([0, 10])
-        .range([ 0, width ]);
-      svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-      // Add Y axis
-      var y = d3.scaleLinear()
-        .domain([0, 420])
-        .range([ height, 0]);
-      svg.append("g")
-        .call(d3.axisLeft(y));
-      // Add a scale for bubble size
-      var z = d3.scaleLinear()
-        .domain([0, 50000])
-        .range([ 4, 40]);
-      // Add a scale for bubble color
-      var myColor = d3.scaleOrdinal()
-        .domain([2, 0, 1])
-        .range(d3.schemeSet2);
-      // -1- Create a tooltip div that is hidden by default:
-      var tooltip = d3.select("#my_dataviz")
-        .append("div")
-          .style("opacity", 0)
-          .attr("class", "tooltip")
-          .style("background-color", "black")
-          .style("border-radius", "5px")
-          .style("padding", "10px")
-          .style("color", "white")
-      // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
-      var showTooltip = function(d) {
-        tooltip
-          .transition()
-          .duration(200)
-        tooltip
-          .style("opacity", 1)
-          .html("Categories: " + d.prime_genre)
-          .style("left", (d3.mouse(this)[0]+30) + "px")
-          .style("top", (d3.mouse(this)[1]+30) + "px")
-      }
-      var moveTooltip = function(d) {
-        tooltip
-          .style("left", (d3.mouse(this)[0]+30) + "px")
-          .style("top", (d3.mouse(this)[1]+30) + "px")
-      }
-      var hideTooltip = function(d) {
-        tooltip
-          .transition()
-          .duration(200)
-          .style("opacity", 0)
-      }
-      // Add dots
-      svg.append('g')
-        .selectAll("dot")
-        .data(data)
-        .enter()
-        .append("circle")
-          .attr("class", "bubbles")
-          .attr("cx", function (d) { return x(d.price); } )
-          .attr("cy", function (d) { return y(d.size_bytes); } )
-          .attr("r", function (d) { return z(d.rating_count_tot); } )
-          .style("fill", function (d) { return myColor(d.user_rating); } )
-        // -3- Trigger the functions
-        .on("mouseover", showTooltip )
-        .on("mousemove", moveTooltip )
-        .on("mouseleave", hideTooltip )
-      })
-
-    svg.append("circle").attr("cx",690).attr("cy",30).attr("r", 6).style("fill", "#69b3a2")
-    svg.append("circle").attr("cx",690).attr("cy",60).attr("r", 6).style("fill", "#6997b3")
-    svg.append("circle").attr("cx",690).attr("cy",90).attr("r", 6).style("fill", "#e88c13")
-    svg.append("text").attr("x", 710).attr("y", 35).text(" Très bien noté").style("font-size", "15px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 710).attr("y", 65).text("Bien noté").style("font-size", "15px").attr("alignment-baseline","middle")
-    svg.append("text").attr("x", 710).attr("y", 95).text("Mal noté").style("font-size", "15px").attr("alignment-baseline","middle")
-
-    svg.append("circle").attr("cx",690).attr("cy",150).attr("r", 6).style("fill", "#dbdbdb")
-    svg.append("circle").attr("cx",690).attr("cy",210).attr("r", 20).style("fill", "#dbdbdb")
-    svg.append("text").attr("x", 710).attr("y", 155).text(" Peu téléchargé").style("font-size", "15px").attr("alignment-baseline","middle")
-
-    svg.append("text").attr("x", 710).attr("y", 215).text("Beaucoup téléchargé").style("font-size", "15px").attr("alignment-baseline","middle")
-
-
-
-    // X axis label:
-    svg.append("text")
-        .attr("text-anchor", "end")
-        .attr("x", width)
-        .attr("y", height + margin.top + 20)
-        .text("Prix en $");
-
-    // Y axis label:
-    svg.append("text")
-        .attr("text-anchor", "end")
-        .attr("transform", "rotate(-90)")
-        .attr("y", -margin.left+20)
-        .attr("x", -margin.top)
-        .text("Taille en Mo ")
-    //Title
-    svg.append("text")
-            .attr("x", (width / 2))             
-            .attr("y", 0 - (margin.top / 2))
-            .attr("text-anchor", "middle")  
-            .style("font-size", "16px") 
-            .style("text-decoration", "underline")  
-            .text("Visualisations des applications AppStore pour différente catégories");
+          <!-- A bit of CSS: change stroke color of circle on hover (white -> black) -->
+          <style>
+          .bubbles {
+            stroke-width: 2px;
+            stroke: white;
+          }
+          .bubbles:hover {
+            stroke: black;
+          }
+          </style>
 
 
 
 
+          <script>
+          // set the dimensions and margins of the graph
+          var margin = {top: 10, right: 20, bottom: 30, left: 50},
+              width = 900 - margin.left - margin.right,
+              height = 400 - margin.top - margin.bottom;
+          // append the svg object to the body of the page
+          var svg = d3.select("#my_dataviz")
+            .append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+              .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+          //Read the data
+          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/First_table_.csv", function(data) {
+            // Add X axis
+            var x = d3.scaleLinear()
+              .domain([0, 10])
+              .range([ 0, width ]);
+            svg.append("g")
+              .attr("transform", "translate(0," + height + ")")
+              .call(d3.axisBottom(x));
+            // Add Y axis
+            var y = d3.scaleLinear()
+              .domain([0, 420])
+              .range([ height, 0]);
+            svg.append("g")
+              .call(d3.axisLeft(y));
+            // Add a scale for bubble size
+            var z = d3.scaleLinear()
+              .domain([0, 50000])
+              .range([ 4, 40]);
+            // Add a scale for bubble color
+            var myColor = d3.scaleOrdinal()
+              .domain([2, 0, 1])
+              .range(d3.schemeSet2);
+            // -1- Create a tooltip div that is hidden by default:
+            var tooltip = d3.select("#my_dataviz")
+              .append("div")
+                .style("opacity", 0)
+                .attr("class", "tooltip")
+                .style("background-color", "black")
+                .style("border-radius", "5px")
+                .style("padding", "10px")
+                .style("color", "white")
+            // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
+            var showTooltip = function(d) {
+              tooltip
+                .transition()
+                .duration(200)
+              tooltip
+                .style("opacity", 1)
+                .html("Categories: " + d.prime_genre)
+                .style("left", (d3.mouse(this)[0]+30) + "px")
+                .style("top", (d3.mouse(this)[1]+30) + "px")
+            }
+            var moveTooltip = function(d) {
+              tooltip
+                .style("left", (d3.mouse(this)[0]+30) + "px")
+                .style("top", (d3.mouse(this)[1]+30) + "px")
+            }
+            var hideTooltip = function(d) {
+              tooltip
+                .transition()
+                .duration(200)
+                .style("opacity", 0)
+            }
+            // Add dots
+            svg.append('g')
+              .selectAll("dot")
+              .data(data)
+              .enter()
+              .append("circle")
+                .attr("class", "bubbles")
+                .attr("cx", function (d) { return x(d.price); } )
+                .attr("cy", function (d) { return y(d.size_bytes); } )
+                .attr("r", function (d) { return z(d.rating_count_tot); } )
+                .style("fill", function (d) { return myColor(d.user_rating); } )
+              // -3- Trigger the functions
+              .on("mouseover", showTooltip )
+              .on("mousemove", moveTooltip )
+              .on("mouseleave", hideTooltip )
+            })
 
-    </script>
+          svg.append("circle").attr("cx",690).attr("cy",30).attr("r", 6).style("fill", "#69b3a2")
+          svg.append("circle").attr("cx",690).attr("cy",60).attr("r", 6).style("fill", "#6997b3")
+          svg.append("circle").attr("cx",690).attr("cy",90).attr("r", 6).style("fill", "#e88c13")
+          svg.append("text").attr("x", 710).attr("y", 35).text(" Très bien noté").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg.append("text").attr("x", 710).attr("y", 65).text("Bien noté").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg.append("text").attr("x", 710).attr("y", 95).text("Mal noté").style("font-size", "15px").attr("alignment-baseline","middle")
+
+          svg.append("circle").attr("cx",690).attr("cy",150).attr("r", 6).style("fill", "#dbdbdb")
+          svg.append("circle").attr("cx",690).attr("cy",210).attr("r", 20).style("fill", "#dbdbdb")
+          svg.append("text").attr("x", 710).attr("y", 155).text(" Peu téléchargé").style("font-size", "15px").attr("alignment-baseline","middle")
+
+          svg.append("text").attr("x", 710).attr("y", 215).text("Beaucoup téléchargé").style("font-size", "15px").attr("alignment-baseline","middle")
+
+
+
+          // X axis label:
+          svg.append("text")
+              .attr("text-anchor", "end")
+              .attr("x", width)
+              .attr("y", height + margin.top + 20)
+              .text("Prix en $");
+
+          // Y axis label:
+          svg.append("text")
+              .attr("text-anchor", "end")
+              .attr("transform", "rotate(-90)")
+              .attr("y", -margin.left+20)
+              .attr("x", -margin.top)
+              .text("Taille en Mo ")
+          //Title
+          svg.append("text")
+                  .attr("x", (width / 2))             
+                  .attr("y", 0 - (margin.top / 2))
+                  .attr("text-anchor", "middle")  
+                  .style("font-size", "16px") 
+                  .style("text-decoration", "underline")  
+                  .text("Visualisations des applications AppStore pour différente catégories");
+
+          </script>
+        </article>
+      </section>
+      <section class="section color2" data-letter="p">
+        <article class="section__wrapper">
+          <h1 class="section__title">Engagement</h1>
+          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+        </article>
+      </section>
+      <section class="section color3" data-letter="q">
+        <article class="section__wrapper">
+          <h1 class="section__title">Consideration</h1>
+          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+        </article>
+      </section>
+      <section class="section color4" data-letter="e">
+        <article class="section__wrapper">
+          <h1 class="section__title">Acquisition</h1>
+          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+        </article>
+      </section>
+      <section class="section color5" data-letter="s">
+        <article class="section__wrapper">
+          <h1 class="section__title">Retention</h1>
+          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+        </article>
+      </section>
+      <section class="section color6">
+        <article class="section__wrapper">
+          <h1 class="section__title">Growth</h1>
+          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+        </article>
+      </section>
+    </div>
+
   </body>
 </html>
