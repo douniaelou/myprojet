@@ -62,7 +62,7 @@
         .attr("transform",
               "translate(" + margin.left + "," + margin.top + ")");
     //Read the data
-    d3.csv("https://github.com/douniaelou/myprojet/blob/master/data/First_table_.csv", function(data) {
+    d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/First_table_.csv", function(data) {
       // Add X axis
       var x = d3.scaleLinear()
         .domain([0, 10])
