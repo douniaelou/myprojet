@@ -95,9 +95,6 @@
           }
           </style>
 
-
-
-
           <script>
           // set the dimensions and margins of the graph
           var margin = {top: 40, right: 20, bottom: 63, left: 50},
@@ -112,7 +109,7 @@
               .attr("transform",
                     "translate(" + margin.left + "," + margin.top + ")");
           //Read the data
-          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/First_table_.csv", function(data) {
+          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/graph1gxp.csv", function(data) {
             // Add X axis
             var x = d3.scaleLinear()
               .domain([0, 10])
@@ -246,7 +243,7 @@
               .attr("transform",
                     "translate(" + margin.left + "," + margin.top + ")");
           // Parse the Data
-          d3.csv("Apple_gxp.csv", function(data) {
+          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/First_table_.csv", function(data) {
             // List of subgroups = header of the csv files = soil condition here
             var subgroups = data.columns.slice(1)
             // List of groups = species here = value of the first column called group -> I show them on the X axis
@@ -337,9 +334,6 @@
           <p></p>
           <div id="my_dataviz"></div>
 
-          <!-- Color Scale -->
-          <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-
           <script>
 
           // set the dimensions and margins of the graph
@@ -357,7 +351,7 @@
                     "translate(" + margin.left + "," + margin.top + ")");
 
           //Read the data
-          d3.csv("data_graph3.csv", function(data) {
+          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/data_graph3.csv", function(data) {
 
               // List of groups (here I have one group per column)
               var allGroup = d3.map(data, function(d){return(d.prime_genre)}).keys()
