@@ -111,7 +111,7 @@ ul {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #c110e0;
+  background: #000000;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
@@ -146,7 +146,7 @@ ul {
   margin: auto;
   width: 10%;
   height: 2px;
-  background: #c110e0;
+  background: #000000;
 }
 @media (max-width: 720px) {
   .section__title {
@@ -160,7 +160,7 @@ ul {
   margin: 0 0 25px 0;
   font-family: 'Georgia';
   font-size: 18px;
-  color: #c110e0;
+  color: #000000;
   opacity: 0.55;
 }
 @media (max-width: 720px) {
