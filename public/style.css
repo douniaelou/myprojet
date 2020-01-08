@@ -84,7 +84,7 @@ ul {
     display: none;
   }
   .nav__thumb {
-    height: 60px;
+    height: 10px;
   }
   .nav__thumb:before {
     font-size: 24px;
