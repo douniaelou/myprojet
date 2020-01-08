@@ -49,7 +49,7 @@ ul {
 .nav__thumb {
   display: block;
   height: 80px;
-  background: #dc143c;
+  background: #1a1a1a;
   transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
 }
 .nav__thumb:before {
@@ -71,7 +71,7 @@ ul {
           transform: translate(-50%, -50%);
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #e6e6e6;
+  color: #1a1a1a;
   margin: 0;
 }
 @media (max-width: 850px) {
@@ -111,7 +111,7 @@ ul {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #242021;
+  background: #1a1a1a;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
@@ -146,7 +146,7 @@ ul {
   margin: auto;
   width: 10%;
   height: 2px;
-  background: #242021;
+  background: #1a1a1a;
 }
 @media (max-width: 720px) {
   .section__title {
@@ -160,7 +160,7 @@ ul {
   margin: 0 0 25px 0;
   font-family: 'Georgia';
   font-size: 18px;
-  color:#242021;
+  color:#1a1a1a;
   opacity: 0.55;
 }
 @media (max-width: 720px) {
