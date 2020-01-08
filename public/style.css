@@ -7,7 +7,7 @@ body {
   font-family: "futura-pt", 'Century Gothic', 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  color: #4f1000;
+  color: #fff;
   background: #1a1a1a;
 }
 a {
@@ -71,7 +71,7 @@ ul {
           transform: translate(-50%, -50%);
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #10e01e;
+  color: #e6e6e6;
   margin: 0;
 }
 @media (max-width: 850px) {
@@ -111,7 +111,7 @@ ul {
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: #000000;
+  background: #242021;
   -webkit-transform: translateX(100%);
           transform: translateX(100%);
   transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
@@ -146,7 +146,7 @@ ul {
   margin: auto;
   width: 10%;
   height: 2px;
-  background: #000000;
+  background: #242021;
 }
 @media (max-width: 720px) {
   .section__title {
@@ -160,7 +160,7 @@ ul {
   margin: 0 0 25px 0;
   font-family: 'Georgia';
   font-size: 18px;
-  color: #000000;
+  color:#242021;
   opacity: 0.55;
 }
 @media (max-width: 720px) {
@@ -172,22 +172,22 @@ ul {
   margin-bottom: 0;
 }
 .color1 {
-  background: #e6edd5;
+  background: #f0bdc7;
 }
 .color2 {
-  background: #edd8d5;
+  background: #e3e6b5;
 }
 .color3 {
-  background: #dfd5ed;
+  background: #b5e6e3;
 }
 .color4 {
-  background: #edd5e2;
+  background: #bde1f0;
 }
 .color5 {
-  background: #d5ede7;
+  background: #ccebb9;
 }
 .color6 {
-  background: #ede5d5;
+  background: #ddbdf0;
 }
 .logo {
   position: fixed;
