@@ -26,12 +26,14 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Groupe_____13</title>
+    <title>Bienvenue à la page du groupe 13</title>
   </head>
   <body>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
+    <select id="selectButton"></select>
+
     
         <!-- Create a div where the graph will take place -->
     <nav class="nav nav--active">
@@ -45,44 +47,41 @@
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color2" data-letter="e"></div>
-            <p class="nav__label">Engagement</p>
+            <p class="nav__label">Graphique 2</p>
           </a>
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color3" data-letter="c"></div>
-            <p class="nav__label">Consideration</p>
+            <p class="nav__label">Graphique 3</p>
           </a>
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color4" data-letter="a"></div>
-            <p class="nav__label">Acquisition</p>
+            <p class="nav__label">Graphique 4</p>
           </a>
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color5" data-letter="r"></div>
-            <p class="nav__label">Retention</p>
+            <p class="nav__label">Graphique 5</p>
           </a>
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color6" data-letter="g"></div>
-            <p class="nav__label">Growth</p>
+            <p class="nav__label">Graphique 6</p>
           </a>
         </li>
       </ul>
-       <a href="http://ettrics.com/" class="logo" target="_blank">
-       <img class="logo" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/45226/ettrics-logo.svg" alt="" /> 
-      </a>
     </nav>
 
     <div class="page">
       <section class="section section--active color1" data-letter="a">
         <article class="section__wrapper">
           <h1 class="section__title">1er graphique</h1>
-          <p>blablablablaaaaaaaaaaaa</p>
+          <p></p>
           <div id="my_dataviz"></div>
 
           <!-- A bit of CSS: change stroke color of circle on hover (white -> black) -->
@@ -101,9 +100,9 @@
 
           <script>
           // set the dimensions and margins of the graph
-          var margin = {top: 10, right: 20, bottom: 30, left: 50},
+          var margin = {top: 40, right: 20, bottom: 63, left: 50},
               width = 900 - margin.left - margin.right,
-              height = 400 - margin.top - margin.bottom;
+              height = 656 - margin.top - margin.bottom;
           // append the svg object to the body of the page
           var svg = d3.select("#my_dataviz")
             .append("svg")
@@ -221,37 +220,266 @@
                   .style("text-decoration", "underline")  
                   .text("Visualisations des applications AppStore pour différente catégories");
 
+
+
+
+
           </script>
         </article>
       </section>
       <section class="section color2" data-letter="p">
         <article class="section__wrapper">
-          <h1 class="section__title">Engagement</h1>
-          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+          <h1 class="section__title">2ème grapique</h1>
+          <p></p>
+          <div id="my_dataviz"></div>
+          <script>
+          // set the dimensions and margins of the graph
+          var margin = {top: 35, right: 30, bottom: 100, left: 60},
+              width = 1500 - margin.left - margin.right,
+              height = 500 - margin.top - margin.bottom;
+          // append the svg object to the body of the page
+          var svg = d3.select("#my_dataviz")
+            .append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+              .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+          // Parse the Data
+          d3.csv("Apple_gxp.csv", function(data) {
+            // List of subgroups = header of the csv files = soil condition here
+            var subgroups = data.columns.slice(1)
+            // List of groups = species here = value of the first column called group -> I show them on the X axis
+            var groups = d3.map(data, function(d){return(d.group)}).keys()
+            // Add X axis
+            var x = d3.scaleBand()
+                .domain(groups)
+                .range([0, width*0.6])
+                .padding([0.2])
+            svg.append("g")
+              .attr("transform", "translate(0," + height + ")")
+              .call(d3.axisBottom(x).tickSizeOuter(0))
+              .selectAll("text")
+                .attr("transform", "translate(-10,40)rotate(-90)")
+                .style("text-anchorLinear axis - scaleLinear()", "end")
+                .style("font-size", 20)
+                .style("fill", "#69a3b2")
+            
+            // Add Y axis
+            var y = d3.scaleLinear()
+              .domain([0, 1000])
+              .range([ height, 0 ]);
+            svg.append("g")
+              .call(d3.axisLeft(y))
+              .selectAll("text")
+                .style("font-size", 20)
+                .style("fill", "#69a3b2")
+            
+            // color palette = one color per subgroup
+            var color = d3.scaleOrdinal()
+              .domain(subgroups)
+              .range(['#e41a1c','#377eb8','#4daf4a'])
+            //stack the data? --> stack per subgroup
+            var stackedData = d3.stack()
+              .keys(subgroups)
+              (data)
+            // Show the bars
+            svg.append("g")
+              .selectAll("g")
+              // Enter in the stack data = loop key per key = group per group
+              .data(stackedData)
+              .enter().append("g")
+                .attr("fill", function(d) { return color(d.key); })
+                .selectAll("rect")
+                // enter a second time = loop subgroup per subgroup to add all rectangles
+                .data(function(d) { return d; })
+                .enter().append("rect")
+                  .attr("x", function(d) { return x(d.data.group); })
+                  .attr("y", function(d) { return y(d[1]); })
+                  .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+                  .attr("width",x.bandwidth())
+          })
+          //Title
+          svg.append("text")
+                  .attr("x", (width / 3.5))             
+                  .attr("y", 0 - (margin.top / 2))
+                  .attr("text-anchor", "middle")  
+                  .style("font-size", "16px") 
+                  .style("text-decoration", "underline")  
+                  .text("Répartition des catégories payante/non payante ");
+
+
+
+          // Y axis label:
+          svg.append("text")
+              .attr("text-anchor", "end")
+              .attr("transform", "rotate(-90)")
+              .attr("y", -margin.left+20)
+              .attr("x", -margin.top)
+              .text("Nombre d'application ")
+
+          svg.append("circle").attr("cx",690).attr("cy",30).attr("r", 10).style("fill", "#ff0000")
+          svg.append("circle").attr("cx",690).attr("cy",90).attr("r", 10).style("fill", "#5774f7")
+          svg.append("text").attr("x", 710).attr("y", 35).text(" Payant").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg.append("text").attr("x", 710).attr("y", 95).text("Non payant").style("font-size", "15px").attr("alignment-baseline","middle")
+
+
+
+
+
+
+          </script>
         </article>
       </section>
       <section class="section color3" data-letter="q">
         <article class="section__wrapper">
-          <h1 class="section__title">Consideration</h1>
-          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+          <h1 class="section__title">3ème graphique</h1>
+          <p></p>
+          <div id="my_dataviz"></div>
+
+          <!-- Color Scale -->
+          <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+
+          <script>
+
+          // set the dimensions and margins of the graph
+          var margin = {top: 20, right: 30, bottom: 80, left: 80},
+              width = 900 - margin.left - margin.right,
+              height = 400 - margin.top - margin.bottom;
+
+          // append the svg object to the body of the page
+          var svg = d3.select("#my_dataviz")
+            .append("svg")
+              .attr("width", width + margin.left + margin.right)
+              .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+              .attr("transform",
+                    "translate(" + margin.left + "," + margin.top + ")");
+
+          //Read the data
+          d3.csv("data_graph3.csv", function(data) {
+
+              // List of groups (here I have one group per column)
+              var allGroup = d3.map(data, function(d){return(d.prime_genre)}).keys()
+
+              // add the options to the button
+              d3.select("#selectButton")
+                .selectAll('myOptions')
+                .data(allGroup)
+                .enter()
+              .append('option')
+                .text(function (d) { return d; }) // text showed in the menu
+                .attr("value", function (d) { return d; }) // corresponding value returned by the button
+
+              // A color scale: one color for each group
+              var myColor = d3.scaleOrdinal()
+                .domain(allGroup)
+                .range(d3.schemeSet2);
+
+              // Add X axis --> it is a date format
+              var x = d3.scaleLinear()
+                .domain([2010,2018])
+                .range([ 0, width ]);
+              svg.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x).ticks(7));
+
+              // Add Y axis
+              var y = d3.scaleLinear()
+                .domain([0,160000])
+                .range([ height, 0 ]);
+              svg.append("g")
+                .call(d3.axisLeft(y));
+
+              // Initialize line with first group of the list
+              var line = svg
+                .append('g')
+                .append("path")
+                  .datum(data.filter(function(d){return d.prime_genre==allGroup[0]}))
+                  .attr("d", d3.line()
+                    .x(function(d) { return x(d.A) })
+                    .y(function(d) { return y(+d.rating_count_tot) })
+                  )
+                  .attr("stroke", function(d){ return myColor("valueA") })
+                  .style("stroke-width", 4)
+                  .style("fill", "none")
+
+              // A function that update the chart
+              function update(selectedGroup) {
+
+                // Create new data with the selection?
+                var dataFilter = data.filter(function(d){return d.prime_genre==selectedGroup})
+
+                // Give these new data to update line
+                line
+                    .datum(dataFilter)
+                    .transition()
+                    .duration(1000)
+                    .attr("d", d3.line()
+                      .x(function(d) { return x(d.A) })
+                      .y(function(d) { return y(+d.rating_count_tot) })
+                    )
+                    .attr("stroke", function(d){ return myColor(selectedGroup) })
+              }
+
+              // When the button is changed, run the updateChart function
+              d3.select("#selectButton").on("change", function(d) {
+                  // recover the option that has been chosen
+                  var selectedOption = d3.select(this).property("value")
+                  // run the updateChart function with this selected option
+                  update(selectedOption)
+              })
+
+          })
+
+
+
+          // X axis label:
+          svg.append("text")
+              .attr("text-anchor", "end")
+              .attr("x", width)
+              .attr("y", height + margin.top + 20)
+              .text("Année");
+
+          // Y axis label:
+          svg.append("text")
+              .attr("text-anchor", "end")
+              .attr("transform", "rotate(-90)")
+              .attr("y", -margin.left+20)
+              .attr("x", -margin.top)
+              .text("Nombres de téléchargements moyen par jour ")
+          //Title
+          svg.append("text")
+                  .attr("x", (width / 2))             
+                  .attr("y", 0 - (margin.top / 2))
+                  .attr("text-anchor", "middle")  
+                  .style("font-size", "16px") 
+                  .style("text-decoration", "underline")  
+                  .text("Evolution du nombre de téléchargement par catégorie");
+
+
+
+
+
+          </script>
         </article>
       </section>
       <section class="section color4" data-letter="e">
         <article class="section__wrapper">
-          <h1 class="section__title">Acquisition</h1>
-          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+          <h1 class="section__title">4ème graphique</h1>
+          <p></p>
         </article>
       </section>
       <section class="section color5" data-letter="s">
         <article class="section__wrapper">
-          <h1 class="section__title">Retention</h1>
-          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+          <h1 class="section__title">5ème graphique</h1>
+          <p></p>
         </article>
       </section>
       <section class="section color6">
         <article class="section__wrapper">
-          <h1 class="section__title">Growth</h1>
-          <p>Use your 'left' and 'right' arrow keys to navigate.</p>
+          <h1 class="section__title">6ème graphique</h1>
+          <p></p>
         </article>
       </section>
     </div>
