@@ -140,7 +140,7 @@
               // Enter in the stack data = loop key per key = group per group
               .data(stackedData2)
               .enter().append("g")
-                .attr("fill", function(d) { return color(d.key); })
+                .attr("fill", function(d) { return color2(d.key); })
                 .selectAll("rect")
                 // enter a second time = loop subgroup per subgroup to add all rectangles
                 .data(function(d) { return d; })
