@@ -108,9 +108,9 @@
 
           <script>
           // set the dimensions and margins of the graph
-          var margin1 = {top1: 40, right1: 20, bottom1: 63, left1: 50},
-              width1 = 900 - margin1.left1 - margin1.right1,
-              height1 = 656 - margin1.top1 - margin1.bottom1;
+          var margin1 = {top1: 300, right1: 50, bottom1: 100, left1: 50},
+              width1 = 600 - margin1.left1 - margin1.right1,
+              height1 = 600 - margin1.top1 - margin1.bottom1;
           // append the svg object to the body of the page
           var svg1 = d3.select("#my_dataviz1")
             .append("svg")
@@ -222,7 +222,7 @@
           //Title
           svg1.append("text")
                   .attr("x", (width1 / 2))             
-                  .attr("y", 0 - (margin1.top1 / 2))
+                  .attr("y", 0 - (margin1.top1 / 4))
                   .attr("text-anchor", "middle")  
                   .style("font-size", "16px") 
                   .style("text-decoration", "underline")  
