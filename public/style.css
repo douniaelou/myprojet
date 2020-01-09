@@ -84,7 +84,7 @@ ul {
     display: none;
   }
   .nav__thumb {
-    height: 10px;
+    height: 60px;
   }
   .nav__thumb:before {
     font-size: 24px;
@@ -133,10 +133,10 @@ ul {
 }
 .section__title {
   margin: 0 0 25px 0;
-  font-size: 30px;
+  font-size: 48px;
   font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 3px;
+  letter-spacing: 5px;
 }
 .section__title:before {
   content: '';
@@ -150,7 +150,7 @@ ul {
 }
 @media (max-width: 720px) {
   .section__title {
-    font-size: 20px;
+    font-size: 28px;
   }
   .section__title:before {
     top: 3.25rem;
