@@ -197,34 +197,34 @@
 
           <script>
           // set the dimensions and margins of the graph
-          var margin = {top: 40, right: 20, bottom: 63, left: 50},
-              width = 900 - margin.left - margin.right,
-              height = 656 - margin.top - margin.bottom;
+          var margin1 = {top1: 40, right1: 20, bottom1: 63, left1: 50},
+              width1 = 900 - margin1.left1 - margin1.right1,
+              height1 = 656 - margin1.top1 - margin1.bottom1;
           // append the svg object to the body of the page
-          var svg = d3.select("#my_dataviz1")
+          var svg1 = d3.select("#my_dataviz1")
             .append("svg")
-              .attr("width", width + margin.left + margin.right)
-              .attr("height", height + margin.top + margin.bottom)
+              .attr("width", width1 + margin1.left1 + margin1.right1)
+              .attr("height", height1 + margin1.top1 + margin1.bottom1)
             .append("g")
               .attr("transform",
-                    "translate(" + margin.left + "," + margin.top + ")");
+                    "translate(" + margin1.left1 + "," + margin1.top1 + ")");
           //Read the data
           d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/First_table_.csv", function(data1) {
             // Add X axis
-            var x = d3.scaleLinear()
+            var x1 = d3.scaleLinear()
               .domain([0, 10])
-              .range([ 0, width ]);
-            svg.append("g")
-              .attr("transform", "translate(0," + height + ")")
-              .call(d3.axisBottom(x));
+              .range([ 0, width1 ]);
+            svg1.append("g")
+              .attr("transform", "translate(0," + height1 + ")")
+              .call(d3.axisBottom(x1));
             // Add Y axis
-            var y = d3.scaleLinear()
+            var y1 = d3.scaleLinear()
               .domain([0, 420])
-              .range([ height, 0]);
-            svg.append("g")
-              .call(d3.axisLeft(y));
+              .range([ height1, 0]);
+            svg1.append("g")
+              .call(d3.axisLeft(y1));
             // Add a scale for bubble size
-            var z = d3.scaleLinear()
+            var z1 = d3.scaleLinear()
               .domain([0, 50000])
               .range([ 4, 40]);
             // Add a scale for bubble color
@@ -263,15 +263,15 @@
                 .style("opacity", 0)
             }
             // Add dots
-            svg.append('g')
+            svg1.append('g')
               .selectAll("dot")
               .data(data1)
               .enter()
               .append("circle")
                 .attr("class", "bubbles")
-                .attr("cx", function (d) { return x(d.price); } )
-                .attr("cy", function (d) { return y(d.size_bytes); } )
-                .attr("r", function (d) { return z(d.rating_count_tot); } )
+                .attr("cx", function (d) { return x1(d.price); } )
+                .attr("cy", function (d) { return y1(d.size_bytes); } )
+                .attr("r", function (d) { return z1(d.rating_count_tot); } )
                 .style("fill", function (d) { return myColor(d.user_rating); } )
               // -3- Trigger the functions
               .on("mouseover", showTooltip )
@@ -279,39 +279,39 @@
               .on("mouseleave", hideTooltip )
             })
 
-          svg.append("circle").attr("cx",690).attr("cy",30).attr("r", 6).style("fill", "#69b3a2")
-          svg.append("circle").attr("cx",690).attr("cy",60).attr("r", 6).style("fill", "#6997b3")
-          svg.append("circle").attr("cx",690).attr("cy",90).attr("r", 6).style("fill", "#e88c13")
-          svg.append("text").attr("x", 710).attr("y", 35).text(" Très bien noté").style("font-size", "15px").attr("alignment-baseline","middle")
-          svg.append("text").attr("x", 710).attr("y", 65).text("Bien noté").style("font-size", "15px").attr("alignment-baseline","middle")
-          svg.append("text").attr("x", 710).attr("y", 95).text("Mal noté").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg1.append("circle").attr("cx",690).attr("cy",30).attr("r", 6).style("fill", "#69b3a2")
+          svg1.append("circle").attr("cx",690).attr("cy",60).attr("r", 6).style("fill", "#6997b3")
+          svg1.append("circle").attr("cx",690).attr("cy",90).attr("r", 6).style("fill", "#e88c13")
+          svg1.append("text").attr("x", 710).attr("y", 35).text(" Très bien noté").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg1.append("text").attr("x", 710).attr("y", 65).text("Bien noté").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg1.append("text").attr("x", 710).attr("y", 95).text("Mal noté").style("font-size", "15px").attr("alignment-baseline","middle")
 
-          svg.append("circle").attr("cx",690).attr("cy",150).attr("r", 6).style("fill", "#dbdbdb")
-          svg.append("circle").attr("cx",690).attr("cy",210).attr("r", 20).style("fill", "#dbdbdb")
-          svg.append("text").attr("x", 710).attr("y", 155).text(" Peu téléchargé").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg1.append("circle").attr("cx",690).attr("cy",150).attr("r", 6).style("fill", "#dbdbdb")
+          svg1.append("circle").attr("cx",690).attr("cy",210).attr("r", 20).style("fill", "#dbdbdb")
+          svg1.append("text").attr("x", 710).attr("y", 155).text(" Peu téléchargé").style("font-size", "15px").attr("alignment-baseline","middle")
 
-          svg.append("text").attr("x", 710).attr("y", 215).text("Beaucoup téléchargé").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg1.append("text").attr("x", 710).attr("y", 215).text("Beaucoup téléchargé").style("font-size", "15px").attr("alignment-baseline","middle")
 
 
 
           // X axis label:
-          svg.append("text")
+          svg1.append("text")
               .attr("text-anchor", "end")
-              .attr("x", width)
-              .attr("y", height + margin.top + 20)
+              .attr("x", width1)
+              .attr("y", height1 + margin1.top1 + 20)
               .text("Prix en $");
 
           // Y axis label:
-          svg.append("text")
+          svg1.append("text")
               .attr("text-anchor", "end")
               .attr("transform", "rotate(-90)")
-              .attr("y", -margin.left+20)
-              .attr("x", -margin.top)
+              .attr("y", -margin1.left1+20)
+              .attr("x", -margin1.top1)
               .text("Taille en Mo ")
           //Title
-          svg.append("text")
-                  .attr("x", (width / 2))             
-                  .attr("y", 0 - (margin.top / 2))
+          svg1.append("text")
+                  .attr("x", (width1 / 2))             
+                  .attr("y", 0 - (margin1.top1 / 2))
                   .attr("text-anchor", "middle")  
                   .style("font-size", "16px") 
                   .style("text-decoration", "underline")  
