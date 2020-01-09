@@ -91,7 +91,7 @@
       </section>
       <section class="section color2" data-letter="p">
         <article class="section__wrapper">
-          <h1 class="section__title">Graphique 1</h1>
+          <h1 class="section__title"> </h1>
           <p></p>
           <div id="my_dataviz1"></div>
 
@@ -108,9 +108,9 @@
 
           <script>
           // set the dimensions and margins of the graph
-          var margin1 = {top1: 300, right1: 50, bottom1: 100, left1: 50},
-              width1 = 600 - margin1.left1 - margin1.right1,
-              height1 = 600 - margin1.top1 - margin1.bottom1;
+          var margin1 = {top1: 35, right1: 50, bottom1: 100, left1: 50},
+              width1 = 1500 - margin1.left1 - margin1.right1,
+              height1 = 500 - margin1.top1 - margin1.bottom1;
           // append the svg object to the body of the page
           var svg1 = d3.select("#my_dataviz1")
             .append("svg")
@@ -222,7 +222,7 @@
           //Title
           svg1.append("text")
                   .attr("x", (width1 / 2))             
-                  .attr("y", 0 - (margin1.top1 / 4))
+                  .attr("y", 0 - (margin1.top1 / 2))
                   .attr("text-anchor", "middle")  
                   .style("font-size", "16px") 
                   .style("text-decoration", "underline")  
@@ -235,14 +235,14 @@
       </section>
       <section class="section color3" data-letter="q">
         <article class="section__wrapper">
-          <h1 class="section__title">Graphique 2</h1>
+          <h1 class="section__title"> </h1>
           <p> </p>
           <select id="selectButton"></select>
           <div id="my_dataviz2"></div>
           <script>
 
           // set the dimensions and margins of the graph
-          var margin = {top: 20, right: 30, bottom: 80, left: 80},
+          var margin = {top: 20, right: 50, bottom: 80, left: 50},
               width = 900 - margin.left - margin.right,
               height = 400 - margin.top - margin.bottom;
 
@@ -366,13 +366,13 @@
       </section>
       <section class="section color4" data-letter="e">
         <article class="section__wrapper">
-          <h1 class="section__title">Graphique 3</h1>
+          <h1 class="section__title"> </h1>
           <p> </p>
           <div id="my_dataviz"></div>
 
           <script>
           // set the dimensions and margins of the graph
-          var margin2 = {top2: 35, right2: 30, bottom2: 100, left2: 60},
+          var margin2 = {top2: 35, right2: 50, bottom2: 100, left2: 50},
               width2 = 1500 - margin2.left2 - margin2.right2,
               height2 = 500 - margin2.top2 - margin2.bottom2;
           // append the svg object to the body of the page
