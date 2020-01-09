@@ -91,7 +91,7 @@
       </section>
       <section class="section color2" data-letter="p">
         <article class="section__wrapper">
-          <h1 class="section__title">Visualisations des applications AppStore pour différente catégories</h1>
+          <h1 class="section__title"> </h1>
           <p></p>
           <div id="my_dataviz1"></div>
 
@@ -218,7 +218,16 @@
               .attr("transform", "rotate(-90)")
               .attr("y", -margin1.left1+20)
               .attr("x", -margin1.top1)
-              .text("Taille en Mo ");
+              .text("Taille en Mo ")
+          //Title
+          svg1.append("text")
+                  .attr("x", (width1 / 2))             
+                  .attr("y", 0 - (margin1.top1 / 2))
+                  .attr("text-anchor", "middle")  
+                  .style("font-size", "32px") 
+                  .style("text-decoration", "uppercase")
+                  .style("font-family": "futura-pt") 
+                  .text("Visualisations des applications AppStore pour différente catégories");
 
 
           </script>
