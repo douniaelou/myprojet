@@ -334,6 +334,7 @@
           // X axis label:
           svg.append("text")
               .attr("text-anchor", "end")
+              .style("font-size", "8px")
               .attr("x", width)
               .attr("y", height + margin.top + 20)
               .text("Année");
@@ -341,8 +342,9 @@
           // Y axis label:
           svg.append("text")
               .attr("text-anchor", "end")
+              .style("font-size", "8px")
               .attr("transform", "rotate(-90)")
-              .attr("y", -margin.left + 10)
+              .attr("y", -margin.left + 20)
               .attr("x", -margin.top)
               .text("Nombres de téléchargements moyen par jour ")
           //Title
