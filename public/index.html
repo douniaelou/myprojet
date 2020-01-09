@@ -40,37 +40,37 @@
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color1" data-letter="a"></div>
-            <p class="nav__label">Graphique 1</p>
+            <p class="nav__label">Home Page</p>
           </a>
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color2" data-letter="e"></div>
-            <p class="nav__label">Graphique 2</p>
+            <p class="nav__label">Graphique 1</p>
           </a>
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color3" data-letter="c"></div>
-            <p class="nav__label">Graphique 3</p>
+            <p class="nav__label">Graphique 2</p>
           </a>
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color4" data-letter="a"></div>
-            <p class="nav__label">Graphique 4</p>
+            <p class="nav__label">Graphique 3</p>
           </a>
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color5" data-letter="r"></div>
-            <p class="nav__label">Graphique 5</p>
+            <p class="nav__label">Graphique 4</p>
           </a>
         </li>
         <li class="nav__item">
           <a href="" class="nav__link">
             <div class="nav__thumb color6" data-letter="g"></div>
-            <p class="nav__label">Graphique 6</p>
+            <p class="nav__label">Graphique 5</p>
           </a>
         </li>
       </ul>
@@ -79,108 +79,19 @@
     <div class="page">
       <section class="section section--active color1" data-letter="a">
         <article class="section__wrapper">
-          <h1 class="section__title">Graphique 1</h1>
-          <p> </p>
-          <div id="my_dataviz"></div>
+          <h1 class="section__title">Analyse de la consommation des données liées aux applications mobiles sur IOS </h1>
+          <p> presenté par: <br>
+          Cebrail AKSOY <br>
+          Mohamed CHNAFY <br>
+          Dounia EL OUADDANE <br>
+          Mumin YASAR <br>
 
-          <script>
-          // set the dimensions and margins of the graph
-          var margin2 = {top2: 35, right2: 30, bottom2: 100, left2: 60},
-              width2 = 1500 - margin2.left2 - margin2.right2,
-              height2 = 500 - margin2.top2 - margin2.bottom2;
-          // append the svg object to the body of the page
-          var svg2 = d3.select("#my_dataviz")
-            .append("svg")
-              .attr("width", width2 + margin2.left2 + margin2.right2)
-              .attr("height", height2 + margin2.top2 + margin2.bottom2)
-            .append("g")
-              .attr("transform",
-                    "translate(" + margin2.left2 + "," + margin2.top2 + ")");
-          // Parse the Data
-          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/graph1gxp.csv", function(data) {
-            // List of subgroups = header of the csv files = soil condition here
-            var subgroups2 = data.columns.slice(1)
-            // List of groups = species here = value of the first column called group -> I show them on the X axis
-            var groups2 = d3.map(data, function(d){return(d.group)}).keys()
-            // Add X axis
-            var x2 = d3.scaleBand()
-                .domain(groups2)
-                .range([0, width2*0.6])
-                .padding([0.2])
-            svg2.append("g")
-              .attr("transform", "translate(0," + height2 + ")")
-              .call(d3.axisBottom(x2).tickSizeOuter(0))
-              .selectAll("text")
-                .attr("transform", "translate(-10,40)rotate(-90)")
-                .style("text-anchorLinear axis - scaleLinear()", "end")
-                .style("font-size", 20)
-                .style("fill", "#69a3b2")
-            
-            // Add Y axis
-            var y2 = d3.scaleLinear()
-              .domain([0, 1000])
-              .range([ height2, 0 ]);
-            svg2.append("g")
-              .call(d3.axisLeft(y2))
-              .selectAll("text")
-                .style("font-size", 20)
-                .style("fill", "#69a3b2")
-            
-            // color palette = one color per subgroup
-            var color2 = d3.scaleOrdinal()
-              .domain(subgroups2)
-              .range(['#e41a1c','#377eb8','#4daf4a'])
-            //stack the data? --> stack per subgroup
-            var stackedData2 = d3.stack()
-              .keys(subgroups2)
-              (data)
-            // Show the bars
-            svg2.append("g")
-              .selectAll("g")
-              // Enter in the stack data = loop key per key = group per group
-              .data(stackedData2)
-              .enter().append("g")
-                .attr("fill", function(d) { return color2(d.key); })
-                .selectAll("rect")
-                // enter a second time = loop subgroup per subgroup to add all rectangles
-                .data(function(d) { return d; })
-                .enter().append("rect")
-                  .attr("x", function(d) { return x2(d.data.group); })
-                  .attr("y", function(d) { return y2(d[1]); })
-                  .attr("height", function(d) { return y2(d[0]) - y2(d[1]); })
-                  .attr("width",x2.bandwidth())
-          })
-          //Title
-          svg2.append("text")
-                  .attr("x", (width2 / 3.5))             
-                  .attr("y", 0 - (margin2.top2 / 2))
-                  .attr("text-anchor", "middle")  
-                  .style("font-size", "16px") 
-                  .style("text-decoration", "underline")  
-                  .text("Répartition des catégories payante/non payante ");
-
-
-
-          // Y axis label:
-          svg2.append("text")
-              .attr("text-anchor", "end")
-              .attr("transform", "rotate(-90)")
-              .attr("y", -margin2.left2+20)
-              .attr("x", -margin2.top2)
-              .text("Nombre d'application ")
-
-          svg2.append("circle").attr("cx",690).attr("cy",30).attr("r", 10).style("fill", "#ff0000")
-          svg2.append("circle").attr("cx",690).attr("cy",90).attr("r", 10).style("fill", "#5774f7")
-          svg2.append("text").attr("x", 710).attr("y", 35).text(" Payant").style("font-size", "15px").attr("alignment-baseline","middle")
-          svg2.append("text").attr("x", 710).attr("y", 95).text("Non payant").style("font-size", "15px").attr("alignment-baseline","middle")
-
-
-          </script>
+          </p>
         </article>
       </section>
       <section class="section color2" data-letter="p">
         <article class="section__wrapper">
-          <h1 class="section__title">Graphique 2</h1>
+          <h1 class="section__title">Graphique 1</h1>
           <p></p>
           <div id="my_dataviz1"></div>
 
@@ -324,7 +235,7 @@
       </section>
       <section class="section color3" data-letter="q">
         <article class="section__wrapper">
-          <h1 class="section__title">Graphique 3</h1>
+          <h1 class="section__title">Graphique 2</h1>
           <p> </p>
           <select id="selectButton"></select>
           <div id="my_dataviz2"></div>
@@ -455,19 +366,114 @@
       </section>
       <section class="section color4" data-letter="e">
         <article class="section__wrapper">
-          <h1 class="section__title">Graphique 4</h1>
+          <h1 class="section__title">Graphique 3</h1>
           <p> </p>
+          <div id="my_dataviz"></div>
+
+          <script>
+          // set the dimensions and margins of the graph
+          var margin2 = {top2: 35, right2: 30, bottom2: 100, left2: 60},
+              width2 = 1500 - margin2.left2 - margin2.right2,
+              height2 = 500 - margin2.top2 - margin2.bottom2;
+          // append the svg object to the body of the page
+          var svg2 = d3.select("#my_dataviz")
+            .append("svg")
+              .attr("width", width2 + margin2.left2 + margin2.right2)
+              .attr("height", height2 + margin2.top2 + margin2.bottom2)
+            .append("g")
+              .attr("transform",
+                    "translate(" + margin2.left2 + "," + margin2.top2 + ")");
+          // Parse the Data
+          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/graph1gxp.csv", function(data) {
+            // List of subgroups = header of the csv files = soil condition here
+            var subgroups2 = data.columns.slice(1)
+            // List of groups = species here = value of the first column called group -> I show them on the X axis
+            var groups2 = d3.map(data, function(d){return(d.group)}).keys()
+            // Add X axis
+            var x2 = d3.scaleBand()
+                .domain(groups2)
+                .range([0, width2*0.6])
+                .padding([0.2])
+            svg2.append("g")
+              .attr("transform", "translate(0," + height2 + ")")
+              .call(d3.axisBottom(x2).tickSizeOuter(0))
+              .selectAll("text")
+                .attr("transform", "translate(-10,40)rotate(-90)")
+                .style("text-anchorLinear axis - scaleLinear()", "end")
+                .style("font-size", 20)
+                .style("fill", "#69a3b2")
+            
+            // Add Y axis
+            var y2 = d3.scaleLinear()
+              .domain([0, 1000])
+              .range([ height2, 0 ]);
+            svg2.append("g")
+              .call(d3.axisLeft(y2))
+              .selectAll("text")
+                .style("font-size", 20)
+                .style("fill", "#69a3b2")
+            
+            // color palette = one color per subgroup
+            var color2 = d3.scaleOrdinal()
+              .domain(subgroups2)
+              .range(['#e41a1c','#377eb8','#4daf4a'])
+            //stack the data? --> stack per subgroup
+            var stackedData2 = d3.stack()
+              .keys(subgroups2)
+              (data)
+            // Show the bars
+            svg2.append("g")
+              .selectAll("g")
+              // Enter in the stack data = loop key per key = group per group
+              .data(stackedData2)
+              .enter().append("g")
+                .attr("fill", function(d) { return color2(d.key); })
+                .selectAll("rect")
+                // enter a second time = loop subgroup per subgroup to add all rectangles
+                .data(function(d) { return d; })
+                .enter().append("rect")
+                  .attr("x", function(d) { return x2(d.data.group); })
+                  .attr("y", function(d) { return y2(d[1]); })
+                  .attr("height", function(d) { return y2(d[0]) - y2(d[1]); })
+                  .attr("width",x2.bandwidth())
+          })
+          //Title
+          svg2.append("text")
+                  .attr("x", (width2 / 3.5))             
+                  .attr("y", 0 - (margin2.top2 / 2))
+                  .attr("text-anchor", "middle")  
+                  .style("font-size", "16px") 
+                  .style("text-decoration", "underline")  
+                  .text("Répartition des catégories payante/non payante ");
+
+
+
+          // Y axis label:
+          svg2.append("text")
+              .attr("text-anchor", "end")
+              .attr("transform", "rotate(-90)")
+              .attr("y", -margin2.left2+20)
+              .attr("x", -margin2.top2)
+              .text("Nombre d'application ")
+
+          svg2.append("circle").attr("cx",690).attr("cy",30).attr("r", 10).style("fill", "#ff0000")
+          svg2.append("circle").attr("cx",690).attr("cy",90).attr("r", 10).style("fill", "#5774f7")
+          svg2.append("text").attr("x", 710).attr("y", 35).text(" Payant").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg2.append("text").attr("x", 710).attr("y", 95).text("Non payant").style("font-size", "15px").attr("alignment-baseline","middle")
+
+
+          </script>
         </article>
       </section>
       <section class="section color5" data-letter="s">
         <article class="section__wrapper">
-          <h1 class="section__title">Graphique 5</h1>
+          <h1 class="section__title">Graphique 4</h1>
           <p> </p>
         </article>
       </section>
       <section class="section color6">
         <article class="section__wrapper">
-          <h1 class="section__title">Graphique 6</h1>
+          <h1 class="section__title">Graphique 5</h1>
           <p> </p>
         </article>
       </section>
