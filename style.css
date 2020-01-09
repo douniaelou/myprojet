@@ -133,10 +133,10 @@ ul {
 }
 .section__title {
   margin: 0 0 25px 0;
-  font-size: 48px;
+  font-size: 30px;
   font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
 }
 .section__title:before {
   content: '';
@@ -150,7 +150,7 @@ ul {
 }
 @media (max-width: 720px) {
   .section__title {
-    font-size: 28px;
+    font-size: 20px;
   }
   .section__title:before {
     top: 3.25rem;
