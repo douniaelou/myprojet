@@ -109,8 +109,8 @@
           <script>
           // set the dimensions and margins of the graph
           var margin1 = {top1: 50, right1: 100, bottom1: 100, left1: 50},
-              width1 = 700 - margin1.left1 - margin1.right1,
-              height1 = 700 - margin1.top1 - margin1.bottom1;
+              width1 = 500 - margin1.left1 - margin1.right1,
+              height1 = 500 - margin1.top1 - margin1.bottom1;
           // append the svg object to the body of the page
           var svg1 = d3.select("#my_dataviz1")
             .append("svg")
@@ -225,7 +225,8 @@
                   .attr("y", 0 - (margin1.top1 / 2))
                   .attr("text-anchor", "middle")  
                   .style("font-size", "32px") 
-                  .style("text-decoration", "uppercase") 
+                  .style("text-decoration", "uppercase")
+                  .style("font-family": "futura-pt") 
                   .text("Visualisations des applications AppStore pour différente catégories");
 
 
