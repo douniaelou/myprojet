@@ -138,23 +138,12 @@ ul {
   text-transform: uppercase;
   letter-spacing: 5px;
 }
-.section__title:before {
-  content: '';
-  position: absolute;
-  top: 5rem;
-  left: 45%;
-  margin: auto;
-  width: 10%;
-  height: 2px;
-  background: #1a1a1a;
-}
+
 @media (max-width: 720px) {
   .section__title {
     font-size: 28px;
   }
-  .section__title:before {
-    top: 3.25rem;
-  }
+
 }
 .section p {
   margin: 0 0 25px 0;
