@@ -31,7 +31,6 @@
   <body>
     <script src="https://d3js.org/d3.v4.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-    <select id="selectButton"></select>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
@@ -210,7 +209,7 @@
               .attr("transform",
                     "translate(" + margin.left + "," + margin.top + ")");
           //Read the data
-          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/First_table_.csv", function(data) {
+          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/First_table_.csv", function(data1) {
             // Add X axis
             var x = d3.scaleLinear()
               .domain([0, 10])
@@ -266,7 +265,7 @@
             // Add dots
             svg.append('g')
               .selectAll("dot")
-              .data(data)
+              .data(data1)
               .enter()
               .append("circle")
                 .attr("class", "bubbles")
@@ -327,6 +326,7 @@
         <article class="section__wrapper">
           <h1 class="section__title">Graphique 3</h1>
           <p> </p>
+          <select id="selectButton"></select>
           <div id="my_dataviz2"></div>
           <script>
 
@@ -345,10 +345,10 @@
                     "translate(" + margin.left + "," + margin.top + ")");
 
           //Read the data
-          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/data_graph3.csv", function(data) {
+          d3.csv("https://raw.githubusercontent.com/douniaelou/myprojet/master/data/data_graph3.csv", function(data2) {
 
               // List of groups (here I have one group per column)
-              var allGroup = d3.map(data, function(d){return(d.prime_genre)}).keys()
+              var allGroup = d3.map(data2, function(d){return(d.prime_genre)}).keys()
 
               // add the options to the button
               d3.select("#selectButton")
@@ -383,7 +383,7 @@
               var line = svg
                 .append('g')
                 .append("path")
-                  .datum(data.filter(function(d){return d.prime_genre==allGroup[0]}))
+                  .datum(data2.filter(function(d){return d.prime_genre==allGroup[0]}))
                   .attr("d", d3.line()
                     .x(function(d) { return x(d.A) })
                     .y(function(d) { return y(+d.rating_count_tot) })
@@ -396,7 +396,7 @@
               function update(selectedGroup) {
 
                 // Create new data with the selection?
-                var dataFilter = data.filter(function(d){return d.prime_genre==selectedGroup})
+                var dataFilter = data2.filter(function(d){return d.prime_genre==selectedGroup})
 
                 // Give these new data to update line
                 line
