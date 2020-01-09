@@ -121,7 +121,7 @@
               .domain([0, 1000])
               .range([ height2, 0 ]);
             svg2.append("g")
-              .call(d3.axisLeft(y))
+              .call(d3.axisLeft(y2))
               .selectAll("text")
                 .style("font-size", 20)
                 .style("fill", "#69a3b2")
@@ -145,10 +145,10 @@
                 // enter a second time = loop subgroup per subgroup to add all rectangles
                 .data(function(d) { return d; })
                 .enter().append("rect")
-                  .attr("x", function(d) { return x(d.data.group); })
-                  .attr("y", function(d) { return y(d[1]); })
-                  .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-                  .attr("width",x.bandwidth())
+                  .attr("x", function(d) { return x2(d.data.group); })
+                  .attr("y", function(d) { return y2(d[1]); })
+                  .attr("height", function(d) { return y2(d[0]) - y2(d[1]); })
+                  .attr("width",x2.bandwidth())
           })
           //Title
           svg2.append("text")
