@@ -2,8 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="http://www.ixxi.fr/actualites/bourse-de-these-a-l2019universite-claude-bernard-lyon-ucbl-france-3-ans/image/image_view_fullscreen" />
-    <link rel="stylesheet" href="style.css">
+    <!-- link rel="stylesheet" href="style.css" -->
+    <link rel="stylesheet" href="style2.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -35,48 +37,8 @@
 
 
 
-    <nav class="nav nav--active">
-      <ul class="nav__list">
-        <li class="nav__item">
-          <a href="" class="nav__link">
-            <div class="nav__thumb color1" data-letter="a"></div>
-            <p class="nav__label">Home Page</p>
-          </a>
-        </li>
-        <li class="nav__item">
-          <a href="" class="nav__link">
-            <div class="nav__thumb color2" data-letter="e"></div>
-            <p class="nav__label">Graphique 1</p>
-          </a>
-        </li>
-        <li class="nav__item">
-          <a href="" class="nav__link">
-            <div class="nav__thumb color3" data-letter="c"></div>
-            <p class="nav__label">Graphique 2</p>
-          </a>
-        </li>
-        <li class="nav__item">
-          <a href="" class="nav__link">
-            <div class="nav__thumb color4" data-letter="a"></div>
-            <p class="nav__label">Graphique 3</p>
-          </a>
-        </li>
-        <li class="nav__item">
-          <a href="" class="nav__link">
-            <div class="nav__thumb color5" data-letter="r"></div>
-            <p class="nav__label">Graphique 4</p>
-          </a>
-        </li>
-        <li class="nav__item">
-          <a href="" class="nav__link">
-            <div class="nav__thumb color6" data-letter="g"></div>
-            <p class="nav__label">Graphique 5</p>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
     <div class="page">
+      <div class="header">
       <section class="section section--active color1" data-letter="a">
         <article class="section__wrapper">
           <h1 class="section__title">Analyse des données liées aux applications mobiles sur IOS </h1>
@@ -89,6 +51,12 @@
           </p>
         </article>
       </section>
+    </div>
+
+      <div class="label1">
+        bla bla bla graph 1
+      </div>
+      <div class="graph1">
       <section class="section color2" data-letter="p">
         <article class="section__wrapper">
           <div id="my_dataviz1"></div>
@@ -107,8 +75,8 @@
           <script>
           // set the dimensions and margins of the graph
           var margin1 = {top1: 45, right1: 30, bottom1: 100, left1: 30},
-              width1 = 700 - margin1.left1 - margin1.right1,
-              height1 = 490 - margin1.top1 - margin1.bottom1;
+              width1 = $(".graph1").width() - margin1.left1 - margin1.right1,
+              height1 = $(".graph1").height() - margin1.top1 - margin1.bottom1;
           // append the svg object to the body of the page
           var svg1 = d3.select("#my_dataviz1")
             .append("svg")
@@ -233,6 +201,14 @@
           
         </article>
       </section>
+    </div>
+
+
+
+
+
+
+    <div class="graph2">
       <section class="section color3" data-letter="q">
         <article class="section__wrapper">
           <h1 class="section__title"> </h1>
@@ -243,8 +219,8 @@
 
           // set the dimensions and margins of the graph
           var margin = {top: 20, right: 50, bottom: 80, left: 50},
-              width = 900 - margin.left - margin.right,
-              height = 400 - margin.top - margin.bottom;
+              width = $(".graph2").width() - margin.left - margin.right,
+              height = $(".graph2").height() - margin.top - margin.bottom;
 
           // append the svg object to the body of the page
           var svg = d3.select("#my_dataviz2")
@@ -366,6 +342,18 @@
 
         </article>
       </section>
+    </div>
+    <div class="label2">
+      bla bla bla graph 2
+    </div>
+
+
+
+
+      <div class="label3">
+        bla bla bla graph 3
+      </div>
+      <div class="graph3">
       <section class="section color4" data-letter="e">
         <article class="section__wrapper">
           <h1 class="section__title"> </h1>
@@ -375,8 +363,8 @@
           <script>
           // set the dimensions and margins of the graph
           var margin2 = {top2: 35, right2: 50, bottom2: 100, left2: 50},
-              width2 = 1500 - margin2.left2 - margin2.right2,
-              height2 = 500 - margin2.top2 - margin2.bottom2;
+              width2 = $(".graph3").width() - margin2.left2 - margin2.right2,
+              height2 = $(".graph3").height() - margin2.top2 - margin2.bottom2;
           // append the svg object to the body of the page
           var svg2 = d3.select("#my_dataviz")
             .append("svg")
@@ -467,18 +455,8 @@
           </script>
         </article>
       </section>
-      <section class="section color5" data-letter="s">
-        <article class="section__wrapper">
-          <h1 class="section__title">Graphique 4</h1>
-          <p> </p>
-        </article>
-      </section>
-      <section class="section color6">
-        <article class="section__wrapper">
-          <h1 class="section__title">Graphique 5</h1>
-          <p> </p>
-        </article>
-      </section>
+    </div>
+
     </div>
     <script type="text/javascript" src="script.js"></script>
   </body>
