@@ -192,7 +192,7 @@
                   .attr("x", (width1 / 2))             
                   .attr("y", 0 - (margin1.top1*0.6))
                   .attr("text-anchor", "middle")  
-                  .style("font-size", "16px") 
+                  .style("font-size", "18px") 
                   .style("font-weight", "bold")
                   .text("Visualisations des applications AppStore pour différente catégories");
 
@@ -312,26 +312,25 @@
           // X axis label:
           svg.append("text")
               .attr("text-anchor", "end")
-              .style("font-size", "8px")
-              .attr("x", width)
+              .style("font-size", "12px")
+              .attr("x", width+10)
               .attr("y", height + margin.top + 20)
               .text("Année");
 
           // Y axis label:
           svg.append("text")
               .attr("text-anchor", "end")
-              .style("font-size", "8px")
-              .attr("transform", "rotate(-90)")
-              .attr("y", -margin.left + 20)
-              .attr("x", -margin.top)
-              .text("Nombres de téléchargements moyen par jour ")
+              .style("font-size", "12px")
+              .attr("y", -10)
+              .attr("x", 190)
+              .text("Nombre de téléchargements moyen par jour ")
           //Title
           svg.append("text")
-                  .attr("x", (width / 2))             
-                  .attr("y", 0 - (margin.top / 2))
+                  .attr("x", (width / 2)+50)             
+                  .attr("y", 0 - (margin.top / 2)+5)
                   .attr("text-anchor", "middle")  
-                  .style("font-size", "16px") 
-                  .style("text-decoration", "underline")  
+                  .style("font-size", "18px") 
+                  .style("font-weight", "bold")  
                   .text("Evolution du nombre de téléchargement par catégorie");
 
 
