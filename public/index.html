@@ -75,8 +75,8 @@
           <script>
           // set the dimensions and margins of the graph
           var margin1 = {top1: 45, right1: 30, bottom1: 50, left1: 30},
-              width1 = $(".graph1").width() - margin1.left1 - margin1.right1,
-              height1 = $(".graph1").height() - margin1.top1 - margin1.bottom1;
+              width1 = $(".graph1").width()-70 ,
+              height1 = $(".graph1").height() ;
           // append the svg object to the body of the page
           var svg1 = d3.select("#my_dataviz1")
             .append("svg")
@@ -176,16 +176,15 @@
               .attr("text-anchor", "end")
               .attr("x", width1 - 20)
               .attr("y", height1 + margin1.top1 -70)
-              .style("font-size", "8px")
+              .style("font-size", "12px")
               .text("Prix en $");
 
           // Y axis label:
           svg1.append("text")
               .attr("text-anchor", "end")
-              .attr("transform", "rotate(-90)")
-              .style("font-size", "8px")
-              .attr("y", -margin1.left1 -20 )
-              .attr("x", -margin1.top1 - 10)
+              .style("font-size", "12px")
+              .attr("y", -5 )
+              .attr("x", 35)
               .text("Taille en Mo ")
           //Title
           svg1.append("text")
