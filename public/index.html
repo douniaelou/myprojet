@@ -42,13 +42,7 @@
       <section class="section section--active color1" data-letter="a">
         <article class="section__wrapper">
           <h1 class="section__title">Analyse des données liées aux applications mobiles sur IOS </h1>
-          <p> presenté par: <br>
-          Cebrail AKSOY <br>
-          Mohamed CHNAFY <br>
-          Dounia EL OUADDANE <br>
-          Mumin YASAR <br>
-
-          </p>
+        
         </article>
       </section>
     </div>
@@ -362,8 +356,8 @@
           <script>
           // set the dimensions and margins of the graph
           var margin2 = {top2: 35, right2: 50, bottom2: 100, left2: 50},
-              width2 = $(".graph3").width() - margin2.left2 - margin2.right2,
-              height2 = $(".graph3").height() - margin2.top2 - margin2.bottom2;
+              width2 = $(".graph3").width() ,
+              height2 = $(".graph3").height() ;
           // append the svg object to the body of the page
           var svg2 = d3.select("#my_dataviz")
             .append("svg")
@@ -381,7 +375,7 @@
             // Add X axis
             var x2 = d3.scaleBand()
                 .domain(groups2)
-                .range([0, width2*0.6])
+                .range([0, width2*0.88])
                 .padding([0.2])
             svg2.append("g")
               .attr("transform", "translate(0," + height2 + ")")
@@ -428,11 +422,11 @@
           })
           //Title
           svg2.append("text")
-                  .attr("x", (width2 / 3.5))             
+                  .attr("x", (width2 / 2.5))             
                   .attr("y", 0 - (margin2.top2 / 2))
                   .attr("text-anchor", "middle")  
-                  .style("font-size", "16px") 
-                  .style("text-decoration", "underline")  
+                  .style("font-size", "18px") 
+                  .style("font-weight", "bold")
                   .text("Répartition des catégories payante/non payante ");
 
 
@@ -440,15 +434,15 @@
           // Y axis label:
           svg2.append("text")
               .attr("text-anchor", "end")
-              .attr("transform", "rotate(-90)")
-              .attr("y", -margin2.left2+20)
-              .attr("x", -margin2.top2)
+              .attr("y", -5)
+              .attr("x", +60)
+              .style("font-size", "12px")
               .text("Nombre d'application ")
 
-          svg2.append("circle").attr("cx",690).attr("cy",30).attr("r", 10).style("fill", "#ff0000")
-          svg2.append("circle").attr("cx",690).attr("cy",90).attr("r", 10).style("fill", "#5774f7")
-          svg2.append("text").attr("x", 710).attr("y", 35).text(" Payant").style("font-size", "15px").attr("alignment-baseline","middle")
-          svg2.append("text").attr("x", 710).attr("y", 95).text("Non payant").style("font-size", "15px").attr("alignment-baseline","middle")
+          svg2.append("circle").attr("cx",630).attr("cy",30).attr("r", 10).style("fill", "#ff0000")
+          svg2.append("circle").attr("cx",630).attr("cy",90).attr("r", 10).style("fill", "#5774f7")
+          svg2.append("text").attr("x", 660).attr("y", 35).text(" Payant").style("font-size", "12px").attr("alignment-baseline","middle")
+          svg2.append("text").attr("x", 660).attr("y", 95).text("Non payant").style("font-size", "12px").attr("alignment-baseline","middle")
 
 
           </script>

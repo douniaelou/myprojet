@@ -7,7 +7,9 @@
   height: 200vh;
 }
 
-
+.section__title {
+  font-family: "futura-pt";
+}
 .header {
   grid-column: 1/3;
   grid-row: 1;
