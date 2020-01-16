@@ -111,12 +111,13 @@
             // -1- Create a tooltip div that is hidden by default:
             var tooltip = d3.select("#my_dataviz")
               .append("div")
-                .style("opacity", 0)
-                .attr("class", "tooltip")
-                .style("background-color", "black")
-                .style("border-radius", "5px")
-                .style("padding", "10px")
-                .style("color", "white")
+              .style("position", "absolute")
+              .style("opacity", 0)
+              .attr("class", "tooltip")
+              .style("background-color", "black")
+              .style("border-radius", "5px")
+              .style("padding", "10px")
+              .style("color", "white")
             // -2- Create 3 functions to show / update (when mouse move but stay on same circle) / hide the tooltip
             var showTooltip = function(d) {
               tooltip
@@ -125,13 +126,13 @@
               tooltip
                 .style("opacity", 1)
                 .html("Categories: " + d.prime_genre)
-                .style("left", (d3.mouse(this)[0]+30) + "px")
+                .style("left", (d3.mouse(this)[0]-1000) + "px")
                 .style("top", (d3.mouse(this)[1]+30) + "px")
             }
             var moveTooltip = function(d) {
               tooltip
-                .style("left", (d3.mouse(this)[0]+1000) + "px")
-                .style("top", (d3.mouse(this)[1]+1000) + "px")
+                .style("left", (d3.mouse(this)[0]+800) + "px")
+                .style("top", (d3.mouse(this)[1]+300) + "px")
             }
             var hideTooltip = function(d) {
               tooltip
@@ -156,18 +157,18 @@
               .on("mouseleave", hideTooltip )
             })
 
-          svg1.append("circle").attr("cx",580).attr("cy",30).attr("r", 6).style("fill", "#69b3a2")
-          svg1.append("circle").attr("cx",580).attr("cy",60).attr("r", 6).style("fill", "#6997b3")
-          svg1.append("circle").attr("cx",580).attr("cy",90).attr("r", 6).style("fill", "#e88c13")
-          svg1.append("text").attr("x", 600).attr("y", 35).text(" Très bien noté").style("font-size", "8px").attr("alignment-baseline","middle")
-          svg1.append("text").attr("x", 600).attr("y", 65).text("Bien noté").style("font-size", "8px").attr("alignment-baseline","middle")
-          svg1.append("text").attr("x", 600).attr("y", 95).text("Mal noté").style("font-size", "8px").attr("alignment-baseline","middle")
+          svg1.append("circle").attr("cx",580).attr("cy",0).attr("r", 6).style("fill", "#69b3a2")
+          svg1.append("circle").attr("cx",580).attr("cy",30).attr("r", 6).style("fill", "#6997b3")
+          svg1.append("circle").attr("cx",580).attr("cy",60).attr("r", 6).style("fill", "#e88c13")
+          svg1.append("text").attr("x", 588).attr("y", 5).text(" Très bien noté").style("font-size", "8px").attr("alignment-baseline","middle")
+          svg1.append("text").attr("x", 588).attr("y", 35).text("Bien noté").style("font-size", "8px").attr("alignment-baseline","middle")
+          svg1.append("text").attr("x", 588).attr("y", 65).text("Mal noté").style("font-size", "8px").attr("alignment-baseline","middle")
 
-          svg1.append("circle").attr("cx",580).attr("cy",150).attr("r", 6).style("fill", "#dbdbdb")
-          svg1.append("circle").attr("cx",580).attr("cy",210).attr("r", 20).style("fill", "#dbdbdb")
-          svg1.append("text").attr("x", 600).attr("y", 155).text(" Peu téléchargé").style("font-size", "8px").attr("alignment-baseline","middle")
+          svg1.append("circle").attr("cx",570).attr("cy",100).attr("r", 6).style("fill", "#dbdbdb")
+          svg1.append("circle").attr("cx",570).attr("cy",130).attr("r", 15).style("fill", "#dbdbdb")
+          svg1.append("text").attr("x", 588).attr("y", 105).text(" Peu téléchargé").style("font-size", "8px").attr("alignment-baseline","middle")
 
-          svg1.append("text").attr("x", 600).attr("y", 215).text("Beaucoup téléchargé").style("font-size", "8px").attr("alignment-baseline","middle")
+          svg1.append("text").attr("x", 588).attr("y", 135).text("Beaucoup téléchargé").style("font-size", "8px").attr("alignment-baseline","middle")
 
 
 
@@ -189,10 +190,10 @@
           //Title
           svg1.append("text")
                   .attr("x", (width1 / 2))             
-                  .attr("y", 0 - (margin1.top1 / 2))
+                  .attr("y", 0 - (margin1.top1*0.6))
                   .attr("text-anchor", "middle")  
                   .style("font-size", "16px") 
-                  .style("text-decoration", "underline")  
+                  .style("font-weight", "bold")
                   .text("Visualisations des applications AppStore pour différente catégories");
 
 
@@ -218,8 +219,8 @@
 
           // set the dimensions and margins of the graph
           var margin = {top: 20, right: 50, bottom: 80, left: 50},
-              width = $(".graph2").width() - margin.left - margin.right,
-              height = $(".graph2").height() - margin.top - margin.bottom;
+              width = $(".graph2").width(),
+              height = $(".graph2").height() ;
 
           // append the svg object to the body of the page
           var svg = d3.select("#my_dataviz2")
