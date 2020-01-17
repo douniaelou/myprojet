@@ -15,7 +15,6 @@ sur la création d’une application.
 ## Aperçu de nos graphiques:
 
 
-Capture d’écran 2020-01-17 à 12.16.36
 
 
 
