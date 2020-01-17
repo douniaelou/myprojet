@@ -15,9 +15,9 @@ sur la création d’une application.
 ## Aperçu de nos graphiques:
 
 
-src/1.png
-![Alt text](/Users/douniaelouaddane/Desktop/projetviz/myprojet/src/2.png)<br />
-![Alt text](/Users/douniaelouaddane/Desktop/projetviz/myprojet/src/3.png)<br />
+![graph1](https://raw.githubusercontent.com/douniaelou/myprojet/master/src/1.png)<br />
+![graph2](https://raw.githubusercontent.com/douniaelou/myprojet/master/src/2.png)<br />
+![graph3](https://raw.githubusercontent.com/douniaelou/myprojet/master/src/3.png)<br />
 
 
 
