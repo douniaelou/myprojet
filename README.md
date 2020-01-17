@@ -15,7 +15,7 @@ sur la création d’une application.
 ## Aperçu de nos graphiques:
 
 
-![Alt text](/Users/douniaelouaddane/Desktop/projetviz/myprojet/src/1.png)<br />
+src/1.png
 ![Alt text](/Users/douniaelouaddane/Desktop/projetviz/myprojet/src/2.png)<br />
 ![Alt text](/Users/douniaelouaddane/Desktop/projetviz/myprojet/src/3.png)<br />
 
