@@ -5,10 +5,12 @@
   grid-gap: 10px;
   width: 95vw;
   height: 200vh;
+  font-family: "futura-pt";
 }
 
 .section__title {
   font-family: "futura-pt";
+  font-size: 28px;
 }
 .header {
   grid-column: 1/3;
