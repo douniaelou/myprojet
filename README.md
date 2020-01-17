@@ -1,18 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Objectifs et descriptif:
+## descriptif:
 
-L’un des objectifs de ce projet est l’aide à la prise de décision pour les créateurs
-d’applications iOS, car nos visualisations permettent de montrer des liens entre des critères
-important pour les choix d’applications iOS. Nous avons par exemple effectué des
-visualisations qui permettent de voir le lien entre le prix d’une application, sa taille (en Mo),
-et le nombre de fois qu’il a été téléchargé. Toute ces informations vont être très utile
-aux créateurs d’applications car ça leur permettra d’orienter leur choix
-sur la création d’une application.
+One of the main goals of this project is decision-making aid for iOS applications creators, because our visualizations allow us to show links between most of important criteriasof iOS app choices. For example, we have visualizations which allow us to see the link between the price of an application, its size (in MB),and the number of times it has been downloaded. All this information will be very useful for the creators of applications because it will allow them to orient their choice on creating an app.
 
 
 
-## Aperçu de nos graphiques:
+## Screenshots:
 
 
 ![graph1](https://raw.githubusercontent.com/douniaelou/myprojet/master/src/1.png)<br />
